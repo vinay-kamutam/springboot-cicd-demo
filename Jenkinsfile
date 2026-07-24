@@ -15,6 +15,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t vinaykamutam/springboot-cicd-demo:v1 .'
+            }
+        }
 
     }
 }
