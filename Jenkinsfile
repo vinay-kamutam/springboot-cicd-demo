@@ -10,6 +10,11 @@ pipeline {
                     url: 'https://github.com/vinay-kamutam/springboot-cicd-demo.git'
             }
         }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
 
     }
 }
