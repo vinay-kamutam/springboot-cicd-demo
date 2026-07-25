@@ -25,16 +25,16 @@ pipeline {
             steps {
                 sshagent(credentials: ['ec2-ssh']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=no ubuntu@100.30.173.217 "
-                        docker pull vinaykamutam/springboot-cicd-demo:v1 &&
-                        docker stop springboot-app || true &&
-                        docker rm springboot-app || true &&
+                        ssh -o StrictHostKeyChecking=no ubuntu@100.30.173.217 << 'EOF'
+                        docker pull vinaykamutam/springboot-cicd-demo:v1
+                        docker stop springboot-app || true
+                        docker rm springboot-app || true
                         docker run -d \
                         --name springboot-app \
                         -p 8080:8080 \
                         vinaykamutam/springboot-cicd-demo:v1
-                        "
-                        '''
+                        EOF
+                    '''
                 }
             }
         }
