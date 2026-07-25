@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-creds', url: '']) {
+                withDockerRegistry([credentialsId: 'vinaykamutam', url: '']) {
                     sh 'docker push vinaykamutam/springboot-cicd-demo:v1'
                     }
             }
