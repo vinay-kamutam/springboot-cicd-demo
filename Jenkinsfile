@@ -52,5 +52,31 @@ EOF
                     """
                 }
         }
+        stage('Trivy Security Scan') {
+            steps {
+                sh """
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    --exit-code 1 \
+                    vinaykamutam/springboot-cicd-demo:${BUILD_NUMBER}
+                    """
+                }
+            }
+        stage('Trivy Security Scan') {
+            steps {
+                sh """
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    --format table \
+                    --output trivy-report.txt \
+                    vinaykamutam/springboot-cicd-demo:${BUILD_NUMBER}
+                    """
+                }
+            }
+        post {
+            always {
+                archiveArtifacts artifacts: 'trivy-report.txt', fingerprint: true
+                }
+            }
     }
 }
