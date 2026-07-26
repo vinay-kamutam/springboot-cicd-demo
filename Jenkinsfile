@@ -43,5 +43,14 @@ EOF
                 }
             }
         }
+        stage('Trivy Scan') {
+            steps {
+                sh """
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    vinaykamutam/springboot-cicd-demo:${BUILD_NUMBER}
+                    """
+                }
+        }
     }
 }
