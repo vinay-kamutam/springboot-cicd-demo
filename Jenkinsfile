@@ -9,6 +9,23 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            environment {
+                SCANNER_HOME = tool 'SonarScanner'
+            }
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh """
+                        ${SCANNER_HOME}/bin/sonar-scanner \
+                          -Dsonar.projectKey=springboot-cicd-demo \
+                          -Dsonar.projectName="Spring Boot CI/CD Demo" \
+                          -Dsonar.sources=src \
+                          -Dsonar.java.binaries=target/classes
+                        """
+                    }
+                }
+            }
+
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t vinaykamutam/springboot-cicd-demo:${BUILD_NUMBER} ."
