@@ -9,7 +9,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "index";   // Loads templates/index.html
+        return "index";
     }
 
     @GetMapping("/health")
