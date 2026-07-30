@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>DevOps CI/CD Demo</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            text-align:center;
+            margin-top:80px;
+        }
+
+        .container{
+            width:70%;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+        }
+
+        h1{
+            color:#2c3e50;
+        }
+
+        p{
+            font-size:18px;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:12px 25px;
+            background:#007bff;
+            color:white;
+            text-decoration:none;
+            border-radius:5px;
+        }
+
+        .btn:hover{
+            background:#0056b3;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🚀 Spring Boot DevOps Demo</h1>
+
+<p>
+Application deployed using Jenkins CI/CD Pipeline.
+</p>
+
+<p>
+Docker • SonarQube • Trivy • Prometheus • Grafana
+</p>
+
+<a href="/actuator/health" class="btn">
+Health Check
+</a>
+
+</div>
+
+</body>
+</html>templates/index.html
