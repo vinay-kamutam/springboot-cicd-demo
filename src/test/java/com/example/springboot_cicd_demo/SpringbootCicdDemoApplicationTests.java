@@ -1,13 +1,30 @@
 package com.example.springboot_cicd_demo;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-class SpringbootCicdDemoApplicationTests {
+@AutoConfigureMockMvc
+class HomeControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
 
     @Test
-    void contextLoads() {
-        // Verifies that the Spring Boot application context starts successfully.
+    void testHomePage() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testHealthEndpoint() throws Exception {
+        mockMvc.perform(get("/health"))
+                .andExpect(status().isOk());
     }
 }
