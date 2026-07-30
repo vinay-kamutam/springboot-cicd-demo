@@ -1,13 +1,12 @@
 package com.example.springboot_cicd_demo;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootTest
-class SpringbootCicdDemoApplicationTests {
+@SpringBootApplication
+public class SpringbootCicdDemoApplication {
 
-    @Test
-    void contextLoads() {
-        // Verifies that the Spring Boot application context starts successfully.
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootCicdDemoApplication.class, args);
     }
 }
